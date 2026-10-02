@@ -1,56 +1,38 @@
-# Welcome to your Expo app 👋
+# TechControl
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Aplicativo mobile para controlar ordens de serviço de computadores e notebooks. Desenvolvido com React Native, Expo, TypeScript, Expo Router e SQLite.
 
-## Get started
+## Rodar o aplicativo
 
-1. Install dependencies
-
-   ```bash
-   npm install
-   ```
-
-2. Start the app
-
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+Instale o [Node.js](https://nodejs.org/), abra o terminal na pasta do projeto e execute:
 
 ```bash
-npm run reset-project
+npm install
+npm run start
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Escaneie o QR code com o Expo Go. Para testar no navegador, pressione `w` no terminal ou execute `npm run web`. Se o celular não alcançar o computador pela rede local, inicie com `npx expo start --go --tunnel`.
 
-### Other setup steps
+## Telas e arquivos principais
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+- `src/app/index.tsx`: listagem, busca e filtro.
+- `src/app/cadastro.tsx`: cadastro e edição no mesmo formulário.
+- `src/app/detalhes.tsx`: detalhes e exclusão com confirmação.
+- `src/app/_layout.tsx`: navegação e inicialização do banco.
+- `src/types.ts`: tipos das ordens e dos status.
+- `src/database.ts`: criação da tabela e todas as consultas SQL.
+- `src/utils/status.ts`: cálculo do atraso.
+- `src/utils/datas.ts`: validação e formatação das datas.
+- `src/utils/foto.ts` e `foto.web.ts`: armazenamento de fotos no celular e no navegador.
+- `src/components/status-badge.tsx`: selo colorido do status.
+- `PROPOSTA.md`: texto da proposta para revisão da dupla.
 
-## Learn more
+No celular, o SQLite guarda os dados localmente e as fotos ficam nos documentos do aplicativo. No navegador, o SQLite usa armazenamento próprio do browser. Os dados do celular e do navegador não são sincronizados.
 
-To learn more about developing your project with Expo, look at the following resources:
+## Verificações
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```bash
+npm run lint
+npx tsc --noEmit
+npx expo-doctor
+```
